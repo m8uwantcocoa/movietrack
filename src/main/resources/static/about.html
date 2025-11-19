@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Movie-track</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .modal-body text-black {
+            backround-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-purple sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-logo" href="index.html">
+            <img src="images/logo2.png" alt="Movie-Track Logo" class="navbar-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="text-white nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="text-white nav-link" href="mvPicks.html">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="text-white nav-link" href="tvPicks.html">TV Shows</a>
+                </li>
+                <li class="nav-item">
+                    <a class="text-white nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+            <form class="d-flex ms-auto" onsubmit="submitSearch(event)">
+                <input class="form-control me-2 search-bar-nav" type="search" placeholder="Search" aria-label="Search" id="headerSearchInput">
+                <button class="btn btn-outline-light search-button-nav" type="submit">
+                    <img class="image-search" src="images/search.png" alt="Search" style="width: 20px; height: 20px;">
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="alertContainer" class="container mt-3"></div>
+
+<div class="container mt-5">
+    <h1 class="text-center font-weight-bold">About Us</h1>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card"style="background: linear-gradient(to right, cyan, purple)" >
+                <div class="card-body">
+                    <h5 class="card-title">Who Are We?</h5>
+                    <p class="card-text">We are a team consisting of four year two System Developer students and one year two
+                        Information architect student. Our goal is to create a website to pass the course Webbstjänster </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="background: purple">
+                <div class="card-body">
+                    <h5 class="card-title">Why Did We Create This?</h5>
+                    <p class="card-text bold" >We created this website as part of our Webbstjänster course to put our learning into practice and showcase our
+                        abilities as a team...
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#whyCreateModal">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="background: linear-gradient(to left, cyan, purple)">
+                <div class="card-body">
+                    <h5 class="card-title">What is MovieTrack?</h5>
+                    <p class="card-text"> MovieTrack is a unique platform designed for movie lovers who want to discover more than
+                        just films. It allows users to search for movies, view detailed information including ratings, and
+                        explore the matching soundtracks that accompany each film...</p>
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#movieTrackModal">Read More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="whoAreWeModal" tabindex="-1" aria-labelledby="whoAreWeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="whoAreWeModalLabel">Who Are We?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black" style="background: linear-gradient(to right, cyan, purple)">
+                We are a team of movie enthusiasts dedicated to bringing you the best movie and TV show recommendations.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="whyCreateModal" tabindex="-1" aria-labelledby="whyCreateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="whyCreateModalLabel">Why Did We Create This?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black" style="background: linear-gradient(to right, cyan, purple)">
+                We created this platform to help people discover new movies and TV shows based on their preferences and ratings and
+                because we needed to create this website as part of our Webbstjänster course to put our learning into practice and showcase
+                our abilities as a team. With four second-year System Developer students and one first-year Information Architect student,
+                we saw an opportunity to combine our diverse skills and create something meaningful. Our goal was not only to fulfill the
+                course requirements but also to challenge ourselves, apply the concepts we’ve learned, and build a website that serves as
+                a testament to our growth and creativity. This project is an important step in our journey as future professionals in the tech
+                industry, and we are proud to present it as a collaborative effort.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="movieTrackModal" tabindex="-1" aria-labelledby="movieTrackModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="movieTrackModalLabel">Are We Non-Profit?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black" style="background: linear-gradient(to right, cyan, purple)">
+                MovieTrack is a unique platform designed for movie lovers who want to discover more than just films.
+                It allows users to search for movies, view detailed information including ratings, and explore the matching
+                soundtracks that accompany each film. Whether you're looking for a specific song from a movie or just curious
+                about its soundtrack, MovieTrack provides an easy way to find tracks you loved while watching. Additionally,
+                the site displays the movie’s ratings and integrates with Spotify to show relevant albums, allowing you to listen
+                to the soundtrack directly. With MovieTrack, you can explore both movies and their music in one seamless experience..
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="bg-dark text-white mt-4">
+    <div class="container text-center py-4">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <p class="mb-0">&copy; 2024 Movie-Track. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <a href="https://github.com/m8uwantcocoa" class="text-white me-3">Emre</a>
+                <a href="https://github.com/Alexoo1232" class="text-white me-3">Alex</a>
+                <a href="#" class="text-white me-3">Arian</a>
+                <a href="#" class="text-white me-3">Adam</a>
+                <a href="#" class="text-white me-3">Mojtaba</a>
+                <a href="#" class="text-white me-2">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="text-white me-2">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="text-white">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

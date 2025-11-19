@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie-track : Where the sound of movies come to life!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-purple">
+  <div class="container-fluid">
+    <a class="navbar-logo" href="index.html">
+      <img src="images/logo2.png" alt="Movie-Track Logo" class="navbar-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="text-white nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-white nav-link" href="mvPicks.html">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a id="tvShowsButton" class="text-white nav-link" href="tvPicks.html">TV Shows</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-white nav-link" href="about.html">About</a>
+        </li>
+      </ul>
+      <form class="d-flex ms-auto" onsubmit="submitSearch(event)">
+        <input class="form-control me-2 search-bar-nav" type="search" placeholder="Search" aria-label="Search" id="headerSearchInput">
+        <button class="btn btn-outline-light search-button-nav" type="submit">
+          <img class="image-search" src="images/search.png" alt="Search" style="width: 20px; height: 20px;">
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div id="noMovieAlert" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+  No movies found with the given search criteria.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div id="alertContainer" class="container mt-3"></div>
+
+<h1 id="welcome-text" class="mt-3 text-center font-weight-bold">Movie-Track :
+  <small class="text-muted">Find your favorite soundtrack!</small>
+</h1>
+
+<div class="container mt-5 center-content">
+  <h2 class="text-center">Search...
+    <small class="text-muted">Maybe you'll find your new jam</small>
+  </h2>
+  <form class="d-flex justify-content-center mt-3" onsubmit="submitSearch(event)">
+    <input class="form-control form-control-lg w-50 autoText" type="search" placeholder="Search for a movie" aria-label="Search" id="searchInput">
+    <button class="btn search-btn btn-lg ms-2" type="submit">Search</button>
+  </form>
+</div>
+<h2 class="text-center popular-section">The Staff Picks</h2>
+
+<hr class="divider">
+
+<div class="container mt-5">
+  <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner" id="staffPicksCarousel">
+      <div class="carousel-item active">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt0816692')">
+              <img src="images/interstellar-poster.jpg" class="card-img-top image-size" alt="interstellar">
+              <div class="card-body">
+                <h5 class="card-title">Interstellar</h5>
+                <p class="card-text">TMDB Rating: 8.6</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt0317219')">
+              <img class="card-img-top" alt="Loading image">
+              <div class="card-body">
+                <h5 class="card-title">Cars</h5>
+                <p class="card-text">Rating: 8.6</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt0107290')">
+              <img  class="card-img-top" alt="Loading image">
+              <div class="card-body">
+                <h5 class="card-title">Jurassic Park</h5>
+                <p class="card-text">Rating: 8.6</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt7131622')">
+              <img  class="card-img-top" alt="Loading image">
+              <div class="card-body">
+                <h5 class="card-title">Once Upon a time in Hollywood</h5>
+                <p class="card-text">Rating: 8.6</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt3450958')">
+              <img  class="card-img-top" alt="Loading image">
+              <div class="card-body">
+                <h5 class="card-title">War for the Planet of the Apes</h5>
+                <p class="card-text">Rating: 8.6</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt0110413')">
+              <img  class="card-img-top" alt="Loading image">
+              <div class="card-body">
+                <h5 class="card-title">Léon</h5>
+                <p class="card-text">Rating: 8.6</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt0246578')">
+              <img  class="card-img-top" alt="Loading image">
+              <div class="card-body">
+                <h5 class="card-title">Donnie Darko</h5>
+                <p class="card-text">Rating: 8.6</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" onclick="submitSearch(null, 'tt1853728')">
+              <img  class="card-img-top" alt="Loading image">
+              <div class="card-body">
+                <h5 class="card-title">Django Unchained</h5>
+                <p class="card-text">Rating: 8.6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<footer class="bg-dark text-white">
+  <div class="container text-center py-4">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        <p class="mb-0">&copy; 2024 Movie-Track. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="https://github.com/m8uwantcocoa"  class="text-white me-3">Emre</a>
+        <a href="https://github.com/Alexoo1232" class="text-white me-3">Alex</a>
+        <a href="#" class="text-white me-3">Arian</a>
+        <a href="#" class="text-white me-3">Adam</a>
+        <a href="#" class="text-white me-3">Mojtaba</a>
+
+        <a href="#" class="text-white me-2">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" class="text-white me-2">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="#" class="text-white">
+          <i class="bi bi-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" async></script>
+</body>
+</html>

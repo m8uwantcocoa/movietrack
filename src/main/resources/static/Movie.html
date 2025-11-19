@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie-track : Where the sound of movies come to life!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="Movie.css">
+  <style>
+    .rating-spinner {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: conic-gradient(rgb(35, 0, 52) 0% 0%, rgb(0, 255, 255) 0% 50%, rgb(35, 0, 52) 50% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .rating-spinner span {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #01161E;
+    }
+    .progress-bar {
+  position: relative;
+  background: linear-gradient(to right, cyan, purple);
+  background-size: 300% 100%;
+  animation: gradient-move 7.5s linear infinite;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  height: 17px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: width 0.8s ease-in-out;
+  padding: 0 10px;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+    #movie-poster {
+    max-height: 600px;
+    max-width: 500px;
+    object-fit: cover;
+    }
+
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-purple sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-logo" href="index.html">
+      <img src="images/logo2.png" alt="Movie-Track Logo" class="navbar-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="text-white nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-white nav-link" href="mvPicks.html">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a id="tvShowsButton" class="text-white nav-link" href="tvPicks.html">TV Shows</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-white nav-link" href="about.html">About</a>
+        </li>
+      </ul>
+      <form class="d-flex ms-auto" onsubmit="submitSearch(event)">
+        <input class="form-control me-2 search-bar-nav" type="search" placeholder="Search" aria-label="Search" id="headerSearchInput">
+        <button class="btn btn-outline-light search-button-nav" type="submit">
+          <img class="image-search" src="images/search.png" alt="Search" style="width: 20px; height: 20px;">
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img id="movie-poster" src="" class="img-fluid" alt="Movie Poster">
+    </div>
+    <div class="col-md-6">
+      <h2 id="movie-title"></h2>
+      <p id="movie-description"></p>
+        <h4>Director</h4>
+        <p id="movie-director"></p>
+        <h4>Actors</h4>
+        <p id="movie-actors"></p>
+      <h4>Year</h4>
+      <p id="movie-year"></p>
+      <h4>Runtime</h4>
+      <p id="movie-runtime"></p>
+        <h4>Awards</h4>
+      <p id="movie-awards"></p>
+      <h4>IMDB Rating</h4>
+      <div id="movie-rating" class="rating-spinner">
+        <span>Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h2 class="text-center">Soundtrack Albums</h2>
+    <div id="albums-container" class="row">
+    </div>
+  </div>
+
+  <div class="album-card-template card" style="display: none;">
+    <img class="album-image card-img-top" src="" alt="Album Image">
+    <div class="card-body">
+      <h5 class="album-name card-title"></h5>
+      <p class="album-release-date card-text"></p>
+      <p class="album-total-tracks card-text"></p>
+      <button class="btn btn-primary play-album-button">Play on Spotify</button>
+    </div>
+  </div>
+</div>
+<div id="alertContainer" class="container mt-3"></div>
+
+<footer class="bg-dark text-white">
+  <div class="container text-center py-4">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        <p class="mb-0">&copy; 2024 Movie-Track. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="https://github.com/m8uwantcocoa"  class="text-white me-3">Emre</a>
+        <a href="https://github.com/Alexoo1232" class="text-white me-3">Alex</a>
+        <a href="#" class="text-white me-3">Arian</a>
+        <a href="#" class="text-white me-3">Adam</a>
+        <a href="#" class="text-white me-3">Mojtaba</a>
+        <!-- Social Media Icons -->
+        <a href="#" class="text-white me-2">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" class="text-white me-2">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a href="#" class="text-white">
+          <i class="bi bi-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" async></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" async></script>
+<script src="script.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const movieTitle = localStorage.getItem('movieTitle');
+    const selectedMovie = JSON.parse(localStorage.getItem('selectedMovie'));
+    console.log(selectedMovie);
+    console.log('Movie Title:', encodeURIComponent(movieTitle))
+    if (selectedMovie) {
+          document.getElementById('movie-title').textContent = selectedMovie.Title;
+          document.getElementById('movie-description').textContent = selectedMovie.Plot;
+          document.getElementById('movie-year').textContent = selectedMovie.Year;
+          document.getElementById('movie-runtime').textContent = selectedMovie.Runtime;
+          document.getElementById('movie-director').textContent = selectedMovie.Director;
+          document.getElementById('movie-awards').textContent = selectedMovie.Awards;
+          document.getElementById('movie-actors').textContent = selectedMovie.Actors;
+          document.getElementById('movie-poster').src = selectedMovie.Poster;
+
+          const rating = parseFloat(selectedMovie.imdbRating) || 0;
+          const ratingSpinner = document.getElementById('movie-rating');
+          const ratingPercentage = (rating / 10) * 100;
+          ratingSpinner.style.background = `conic-gradient(rgb(0, 255, 255) 0% ${ratingPercentage}%, rgb(35, 0, 52) ${ratingPercentage}% 100%)`;
+          ratingSpinner.querySelector('span').textContent = rating.toFixed(1);
+
+        } else {
+            console.log('No movie found in localStorage.');
+            console.error('No movie title found in localStorage.');
+    }
+  });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const title = localStorage.getItem('movieTitle')
+      fetch(`/api/movies/${encodeURIComponent(title)}`)
+
+      .then(response => response.json())
+      .then(data => {
+
+        const albumsContainer = document.getElementById('albums-container');
+        const albumTemplate = document.querySelector('.album-card-template');
+
+        data.albums.forEach(album => {
+          const albumElement = albumTemplate.cloneNode(true);
+          albumElement.style.display = 'block';
+          albumElement.querySelector('.album-image').src = album.imageUrl;
+          albumElement.querySelector('.album-name').textContent = album.name;
+          albumElement.querySelector('.album-release-date').textContent = `Release Date: ${album.releaseDate}`;
+          albumElement.querySelector('.album-total-tracks').textContent = `Total Tracks: ${album.totalTracks}`;
+          albumElement.querySelector('.play-album-button').addEventListener('click', () => {
+            const albumId = album.spotifyUri.split(':').pop();
+            window.open(`https://open.spotify.com/album/${albumId}`, '_blank');
+          });
+          albumsContainer.appendChild(albumElement);
+        });
+      })
+      .catch(error => console.error('Error fetching albums:', error));
+  });
+</script>
+</body>
+</html>
